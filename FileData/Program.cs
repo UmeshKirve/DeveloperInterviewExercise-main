@@ -1,7 +1,8 @@
-﻿using System;
+﻿using FileDataBusiness;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using ThirdPartyTools;
+
 
 namespace FileData
 {
@@ -9,28 +10,25 @@ namespace FileData
     {
         public static void Main(string[] args)
         {
-            if (args.Length < 2)
+            try
             {
-                Console.WriteLine("Insuffiecent arguments");
-            }
-            else if (args.Length == 2)
-            {
-                string argFirstParameter = args[0];
-                if (argFirstParameter == "-v" || argFirstParameter == "--v" || argFirstParameter == "/v" || argFirstParameter == "--version")
+                if (args.Length < 2 || args.Length > 2)
                 {
-                    string argsSecondParameter = args[1];
-                    FileDetails fileDetailsObj = new FileDetails();
-                    Console.WriteLine("Version : {0}", fileDetailsObj.Version(argsSecondParameter));
-                    Console.Read();
+                    Console.WriteLine("Please set correct number of arguments");
                 }
-                if (argFirstParameter == "-s" || argFirstParameter == "--s" || argFirstParameter == "/s" || argFirstParameter == "--size")
+                else
                 {
-                    string argsSecondParameter = args[1];
-                    FileDetails fileDetailsObj = new FileDetails();
-                    Console.WriteLine("File Size : {0}", fileDetailsObj.Size(argsSecondParameter));
-                    Console.Read();
-                } 
+                    IFileDataManager fileDataManager = new FileDataManager();
+                    var fileInfo = fileDataManager.GetFileDetails(args);
+                    Console.WriteLine(!string.IsNullOrWhiteSpace(fileInfo) ? fileInfo : "Please set correct arguments to get FileInfo");
+                }
+                Console.Read();
             }
+            catch (Exception ex)
+            { 
+                Console.WriteLine("Exception Occured whilemprocessing the request {0}", ex);
+            }
+            
         }
     }
 }

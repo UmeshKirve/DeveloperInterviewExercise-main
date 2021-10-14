@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66BAF37D-5095-498C-A988-0FD52F25C096}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>FileData</RootNamespace>
-    <AssemblyName>FileData</AssemblyName>
+    <ProjectGuid>{B22D1E9A-51AE-4842-9826-A9B4EED41DE3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FileDataBusiness</RootNamespace>
+    <AssemblyName>FileDataBusiness</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,16 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="FileDataManager.cs" />
+    <Compile Include="IFileDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileDataBusiness\FileDataBusiness.csproj">
-      <Project>{b22d1e9a-51ae-4842-9826-a9b4eed41de3}</Project>
-      <Name>FileDataBusiness</Name>
+    <ProjectReference Include="..\ThirdPartyTools\ThirdPartyTools.csproj">
+      <Project>{510149c0-2b4d-4f90-ba91-26bd0bbdd0f6}</Project>
+      <Name>ThirdPartyTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
