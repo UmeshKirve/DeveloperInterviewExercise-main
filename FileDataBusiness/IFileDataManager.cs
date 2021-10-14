@@ -8,7 +8,7 @@ namespace FileDataBusiness
 {
     public interface IFileDataManager
     {
-        string GetFileDetails(string[] fileInfo);
+        string GetFileDetails(string argsFirst, string argsSecond);
         
     }
 }

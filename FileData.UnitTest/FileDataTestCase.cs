@@ -16,7 +16,7 @@ namespace FileData.UnitTest
         {
             IFileDataManager fileDataManager = new FileDataManager();
             var arguments = new string[] { "--v", "C:/ test.txt" }; 
-            Assert.NotNull(fileDataManager.GetFileDetails(arguments));
+            Assert.NotNull(fileDataManager.GetFileDetails(arguments[0], arguments[1]));
         }
 
         

@@ -19,7 +19,7 @@ namespace FileData
                 else
                 {
                     IFileDataManager fileDataManager = new FileDataManager();
-                    var fileInfo = fileDataManager.GetFileDetails(args);
+                    var fileInfo = fileDataManager.GetFileDetails(args[0], args[1]);
                     Console.WriteLine(!string.IsNullOrWhiteSpace(fileInfo) ? fileInfo : "Please set correct arguments to get FileInfo");
                 }
                 Console.Read();

@@ -13,23 +13,22 @@ namespace FileDataBusiness
 
         public static readonly List<String> sizeArgumentTypes = new List<string>(new List<String> { "-s", "--s", "/s", "--size" });
 
-        public string GetFileDetails(string[] fileInfo)
+        public string GetFileDetails(string argsFirst, string argsSecond)
         {
             try
             {
-                string argFirstParameter = fileInfo[0];
-
-                string argsSecondParameter = fileInfo[1];
-
-                if (versionArgumentTypes.Contains(argFirstParameter))
+                if (string.IsNullOrWhiteSpace(argsFirst) || string.IsNullOrWhiteSpace(argsSecond))
                 {
-                    return string.Format("File Version : {0}", GetFileVersion(argsSecondParameter));
-
+                    return null;
                 }
-                if (sizeArgumentTypes.Contains(argFirstParameter))
-                {
-                    return string.Format("File Size : {0}", GetFileSize(argsSecondParameter));
 
+                if (versionArgumentTypes.Contains(argsFirst))
+                {
+                    return string.Format("File Version : {0}", GetFileVersion(argsSecond));
+                }
+                if (sizeArgumentTypes.Contains(argsFirst))
+                {
+                    return string.Format("File Size : {0}", GetFileSize(argsSecond));
                 }
             }
             catch (Exception ex)
